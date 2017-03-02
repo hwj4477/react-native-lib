@@ -1,5 +1,5 @@
 /*
- *  CommonApplication.js
+ *  NavigationController.js
  *
  *  last update 2017.03.02
  *
@@ -10,17 +10,15 @@
 import React, { Component, PropTypes } from 'react';
 import { AppRegistry, Navigator, Text, TouchableHighlight } from 'react-native';
 
-class CommonApplication extends Component {
+class NavigationController extends Component {
 
   static propTypes = {
-    rootVCId: PropTypes.string,
-    rootVCTitle: PropTypes.string,
-    viewControllers: PropTypes.object,
+    title: PropTypes.string,
+    rootViewController: PropTypes.func,
   }
 
   _renderScene(route, navigator) {
-       var routeId = route.id;
-       var vc = this.props.viewControllers[routeId];
+       var vc = route.viewController;
 
       return (
 
@@ -33,8 +31,8 @@ class CommonApplication extends Component {
     return (
       <Navigator
         initialRoute={{
-          id: this.props.rootVCId,
-          title: this.props.rootVCTitle,
+          title: this.props.title,
+          viewController: this.props.rootViewController,
         }}
         renderScene={(route, navigator) =>
           this._renderScene(route, navigator)
@@ -45,7 +43,7 @@ class CommonApplication extends Component {
             routeMapper={{
               LeftButton: (route, navigator, index, navState) =>
               {
-                if (route.id == this.props.rootVCId) {
+                if (route.viewController == this.props.rootViewController) {
                   return null;
                 } else {
                   return (
@@ -70,4 +68,4 @@ class CommonApplication extends Component {
   }
 }
 
-module.exports = CommonApplication;
+module.exports = NavigationController;
