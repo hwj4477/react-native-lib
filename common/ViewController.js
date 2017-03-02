@@ -1,3 +1,12 @@
+/*
+ *  ViewController.js
+ *
+ *  last update 2017.03.02
+ *
+ *  hwj4477@gmail.com
+ *
+ */
+
 import React, { Component, PropTypes } from 'react'
 import { Navigator, BackAndroid } from 'react-native';
 
