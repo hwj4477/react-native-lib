@@ -9,4 +9,4 @@ git submodule add https://github.com/hwj4477/react-native-lib.git {your project 
 
 ## Common
 This library that makes 'React Native Component' similar to the 'iOS UIViewController' design pattern.<br />
-[More]({{ site.url }}/common)
+[More](/common)
