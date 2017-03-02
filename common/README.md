@@ -7,7 +7,7 @@ NavigationController is similar to iOS UINavigationController.<br />
 - Accessible from ViewController.
 
 ## ViewController.js
-Viewcontroller is similar to iOS UIViewController.<br />
+ViewController is similar to iOS UIViewController.<br />
 - Data passing uses props.
 - Handling for android back button.
 
