@@ -29,4 +29,4 @@ BackAndroid.addEventListener('hardwareBackPress', () => {
     return false;
 });
 
-module.exports = SceneController;
+module.exports = ViewController;
