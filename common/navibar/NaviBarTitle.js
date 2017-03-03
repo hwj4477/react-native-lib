@@ -14,12 +14,13 @@ class NaviBarTitle extends Component {
 
   static propTypes = {
     title: PropTypes.string,
+    style: PropTypes.object,
   }
 
   render() {
     return (
       <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-          <Text>{this.props.title}</Text>
+          <Text style={this.props.style}>{this.props.title}</Text>
       </View>
     );
   }

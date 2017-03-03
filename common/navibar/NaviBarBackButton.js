@@ -15,6 +15,7 @@ class NaviBarBackButton extends Component {
   static propTypes = {
     title: PropTypes.string,
     onBackPressed: PropTypes.func.isRequired,
+    style: PropTypes.object,
   }
 
   static defaultProps = {
@@ -25,7 +26,7 @@ class NaviBarBackButton extends Component {
     return (
       <TouchableHighlight underlayColor='gray' onPress={this.props.onBackPressed} style={{flex:1, padding:13, justifyContent:'center'}}>
         <View>
-          <Text>{this.props.title}</Text>
+          <Text style={this.props.style}>{this.props.title}</Text>
         </View>
       </TouchableHighlight>
     );

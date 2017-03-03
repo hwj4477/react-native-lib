@@ -22,12 +22,14 @@ const defaultStyle = {
 class NavigationController extends Component {
 
   static propTypes = {
-    title: PropTypes.string,
-    rootViewController: PropTypes.func,
-    navigationStyle: PropTypes.object,
-    naviBarStyle: PropTypes.object,
-    naviBarTitle: PropTypes.func,
-    naviBarBackButton: PropTypes.func,
+    title: PropTypes.string,              //  RootViewController Title
+    rootViewController: PropTypes.func,   //  RooViewController Component
+    navigationStyle: PropTypes.object,    //  Navigator.NavigationBar Styles (Styles.IOS / Styles.Android)
+    naviBarStyle: PropTypes.object,       //  NavigationBar props.style
+    naviBarTitle: PropTypes.func,         //  NaviBarTitle Component
+    naviBarTitleStyle: PropTypes.object,  //  NaviBarTitle props.style
+    naviBarBackButton: PropTypes.func,    //  NaviBarBackButton Component
+    naviBarBackStyle: PropTypes.object,   //  NaviBarBackButton props.style
   }
 
   static defaultProps = {
@@ -79,7 +81,7 @@ class NavigationController extends Component {
 
                   return (
 
-                    React.createElement(backButton, {title: route.backTitle, onBackPressed: this._onBackPressed})
+                    React.createElement(backButton, {title: route.backTitle, style:this.props.naviBarBackStyle, onBackPressed: this._onBackPressed})
 
                   );
                 }
@@ -92,7 +94,7 @@ class NavigationController extends Component {
 
                 return (
 
-                  React.createElement(naviTitle, {title: route.title, style: this.props.naviBarStyle})
+                  React.createElement(naviTitle, {title: route.title, style: this.props.naviBarTitleStyle})
 
                 );
               },
