@@ -24,12 +24,14 @@ class NavigationController extends Component {
   static propTypes = {
     title: PropTypes.string,
     rootViewController: PropTypes.func,
+    navigationStyle: PropTypes.object,
     naviBarStyle: PropTypes.object,
     naviBarTitle: PropTypes.func,
     naviBarBackButton: PropTypes.func,
   }
 
   static defaultProps = {
+    navigationStyle: Navigator.NavigationBar.StylesIOS,
     naviBarStyle: defaultStyle,
     naviBarTitle: NaviBarTitle,
     naviBarBackButton: NaviBarBackButton,
@@ -40,7 +42,7 @@ class NavigationController extends Component {
 
       return (
 
-        React.createElement(vc, {navigator: navigator, passValues: route.passProps})
+        React.createElement(vc, {navigator: navigator, passProps: route.passProps})
 
       );
   }
@@ -63,7 +65,7 @@ class NavigationController extends Component {
         }
         navigationBar={
           <Navigator.NavigationBar
-            navigationStyles={Navigator.NavigationBar.StylesIOS}
+            navigationStyles={this.props.navigationStyle}
             routeMapper={{
               LeftButton: (route, navigator, index, navState) =>
               {
@@ -77,7 +79,7 @@ class NavigationController extends Component {
 
                   return (
 
-                    React.createElement(backButton, {title: route.backTitle,onBackPressed: this._onBackPressed})
+                    React.createElement(backButton, {title: route.backTitle, onBackPressed: this._onBackPressed})
 
                   );
                 }

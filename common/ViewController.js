@@ -22,7 +22,7 @@ class ViewController extends Component {
 
   static propTypes = {
     navigator: PropTypes.object,
-    passValues: PropTypes.object,
+    passProps: PropTypes.object,
   }
 
   _onBack = () => {

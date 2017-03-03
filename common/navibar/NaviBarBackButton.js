@@ -23,7 +23,7 @@ class NaviBarBackButton extends Component {
 
   render() {
     return (
-      <TouchableHighlight underlayColor='gray' onPress={this.props.onBackPressed} style={{flex:1, padding:13}}>
+      <TouchableHighlight underlayColor='gray' onPress={this.props.onBackPressed} style={{flex:1, padding:13, justifyContent:'center'}}>
         <View>
           <Text>{this.props.title}</Text>
         </View>
