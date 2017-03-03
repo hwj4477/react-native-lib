@@ -81,7 +81,7 @@ class NavigationController extends Component {
 
                   return (
 
-                    React.createElement(backButton, {title: route.backTitle, style:this.props.naviBarBackStyle, onBackPressed: this._onBackPressed})
+                    React.createElement(backButton, {title: route.backTitle, style:this.props.naviBarBackStyle, onPress: this._onBackPressed})
 
                   );
                 }
