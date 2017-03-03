@@ -8,13 +8,31 @@
  */
 
 import React, { Component, PropTypes } from 'react';
-import { AppRegistry, Navigator, Text, TouchableHighlight } from 'react-native';
+import { AppRegistry, Navigator, Text, View, StyleSheet } from 'react-native';
+
+import NaviBarTitle from './navibar/NaviBarTitle';
+import NaviBarBackButton from './navibar/NaviBarBackButton';
+
+var navigationController;
+
+const defaultStyle = {
+  backgroundColor: 'gray',
+};
 
 class NavigationController extends Component {
 
   static propTypes = {
     title: PropTypes.string,
     rootViewController: PropTypes.func,
+    naviBarStyle: PropTypes.object,
+    naviBarTitle: PropTypes.func,
+    naviBarBackButton: PropTypes.func,
+  }
+
+  static defaultProps = {
+    naviBarStyle: defaultStyle,
+    naviBarTitle: NaviBarTitle,
+    naviBarBackButton: NaviBarBackButton,
   }
 
   _renderScene(route, navigator) {
@@ -25,6 +43,12 @@ class NavigationController extends Component {
         React.createElement(vc, {navigator: navigator, passValues: route.passProps})
 
       );
+  }
+
+  _onBackPressed = () => {
+
+    navigationController.pop();
+
   }
 
   render() {
@@ -46,10 +70,15 @@ class NavigationController extends Component {
                 if (route.viewController == this.props.rootViewController) {
                   return null;
                 } else {
+
+                  navigationController = navigator;
+
+                  var backButton = this.props.naviBarBackButton;
+
                   return (
-                    <TouchableHighlight onPress={() => navigator.pop()}>
-                        <Text style={{marginLeft: 10}}>Back</Text>
-                    </TouchableHighlight>
+
+                    React.createElement(backButton, {title: route.backTitle,onBackPressed: this._onBackPressed})
+
                   );
                 }
               },
@@ -57,10 +86,16 @@ class NavigationController extends Component {
               { return null; },
               Title: (route, navigator, index, navState) =>
               {
-                return <Text>{route.title}</Text>;
+                var naviTitle = this.props.naviBarTitle;
+
+                return (
+
+                  React.createElement(naviTitle, {title: route.title, style: this.props.naviBarStyle})
+
+                );
               },
             }}
-            style={{backgroundColor: 'white'}}
+            style={this.props.naviBarStyle}
             />
         }
       />
